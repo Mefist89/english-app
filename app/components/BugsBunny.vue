@@ -2,7 +2,12 @@
   <div
     v-motion
     :initial="{ opacity: 0, scale: 0.8, y: 50 }"
-    :enter="{ opacity: 1, scale: 1, y: 0, transition: { duration: 600, type: 'spring' } }"
+    :enter="{
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { duration: 600, type: 'spring' },
+    }"
     class="relative"
   >
     <div class="relative inline-block">
@@ -15,21 +20,36 @@
       />
 
       <!-- Speech Bubble -->
+      <!-- Speech Bubble -->
       <div
         v-if="message"
         v-motion
-        :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-        :enter="{ opacity: 1, scale: 1, y: 0, transition: { duration: 300 } }"
-        class="absolute -top-4 left-1/2 transform -translate-x-1/2 -translate-y-full mb-4"
+        :initial="{ opacity: 0, scale: 0.5, x: 20 }"
+        :enter="{ opacity: 1, scale: 1, x: 0, transition: { duration: 300 } }"
+        class="absolute top-1/2 right-full transform -translate-y-1/2 mr-3 z-20 w-max max-w-[150px] md:max-w-xs"
       >
-        <div class="relative bg-white rounded-2xl shadow-xl p-4 md:p-6 max-w-xs border-4 border-blue-400">
-          <p class="text-lg md:text-xl font-bold text-gray-800 text-center">
+        <div
+          class="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-3 md:p-5 border border-white/50 ring-4 ring-indigo-50"
+        >
+          <p
+            class="text-sm md:text-lg font-bold text-indigo-900 text-center leading-snug"
+          >
             {{ message }}
           </p>
-          <!-- Speech bubble tail -->
-          <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-            <div class="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[20px] border-t-blue-400"></div>
-            <div class="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[16px] border-t-white absolute -top-[18px] left-1/2 transform -translate-x-1/2"></div>
+          <!-- Speech bubble tail (pointing right) -->
+          <div
+            class="absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2 drop-shadow-sm"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="text-white/90 transform rotate-[-90deg]"
+            >
+              <path d="M12 24L0 0H24L12 24Z" fill="currentColor" />
+            </svg>
           </div>
         </div>
       </div>
@@ -38,38 +58,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
 interface Props {
-  message?: string
-  animate?: boolean
+  message?: string;
+  animate?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  message: '',
-  animate: false
-})
+  message: "",
+  animate: false,
+});
 
-const characterName = 'Bugs Bunny'
-const characterImage = '/images/characters/bugs-bunny.png'
-const isAnimating = ref(props.animate)
+const characterName = "Bugs Bunny";
+const characterImage = "/images/characters/bugs-bunny.png";
+const isAnimating = ref(props.animate);
 
 // Function to trigger animation
 const bounce = () => {
-  isAnimating.value = true
+  isAnimating.value = true;
   setTimeout(() => {
-    isAnimating.value = false
-  }, 1000)
-}
+    isAnimating.value = false;
+  }, 1000);
+};
 
 defineExpose({
-  bounce
-})
+  bounce,
+});
 </script>
 
 <style scoped>
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {

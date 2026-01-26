@@ -34,7 +34,7 @@
       class="mb-12"
     >
       <NuxtLink
-        to="/lessons"
+        to="/level1"
         class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-2xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110"
       >
         Let's Start!
@@ -49,11 +49,11 @@
       class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto"
     >
       <NuxtLink
-        to="/lessons"
+        to="/level1"
         class="card hover:scale-105 cursor-pointer text-center"
       >
-        <div class="text-4xl mb-2">ABC</div>
-        <h2 class="text-lg md:text-xl font-bold text-blue-600">Lessons</h2>
+        <div class="text-4xl mb-2">1️⃣</div>
+        <h2 class="text-lg md:text-xl font-bold text-blue-600">Level 1</h2>
       </NuxtLink>
 
       <NuxtLink
