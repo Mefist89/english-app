@@ -10,8 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@vueuse/core": "^14.1.0",
     "@vueuse/motion": "^3.0.3",
+    "canvas-confetti": "^1.9.4",
     "nuxt": "^4.2.2",
     "vue": "^3.5.27",
     "vue-draggable-plus": "^0.6.1",
