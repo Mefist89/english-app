@@ -64,13 +64,7 @@
         <h2 class="text-lg md:text-xl font-bold text-teal-600">Level 2</h2>
       </NuxtLink>
 
-      <NuxtLink
-        to="/level3"
-        class="card hover:scale-105 cursor-pointer text-center"
-      >
-        <div class="text-4xl mb-2">3️⃣</div>
-        <h2 class="text-lg md:text-xl font-bold text-orange-600">Level 3</h2>
-      </NuxtLink>
+
 
       <NuxtLink
         to="/games"
