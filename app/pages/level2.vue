@@ -8,7 +8,7 @@
 
     <!-- Content -->
     <div class="relative z-10 min-h-screen p-4 md:p-8">
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto scale-[0.8] origin-top">
       <header class="relative overflow-hidden rounded-3xl bg-white/40 backdrop-blur-xl border border-white/50 shadow-xl p-8 mb-8 flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="relative z-10 text-center md:text-left">
           <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 mb-2 drop-shadow-sm">

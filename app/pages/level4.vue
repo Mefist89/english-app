@@ -8,7 +8,7 @@
 
     <!-- Content -->
     <div class="relative z-10 min-h-screen p-4 md:p-8">
-      <div class="max-w-6xl mx-auto">
+      <div class="max-w-6xl mx-auto scale-[0.8] origin-top">
         <header
           class="relative overflow-hidden rounded-3xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl p-6 mb-6 flex flex-col md:flex-row items-center justify-between gap-6"
         >

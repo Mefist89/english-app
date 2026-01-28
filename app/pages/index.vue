@@ -12,21 +12,16 @@
         <BugsBunny />
       </div>
 
-      <!-- Welcome Text -->
-      <div
-        v-motion
-        :initial="{ opacity: 0, x: 50 }"
-        :enter="{ opacity: 1, x: 0, transition: { duration: 600 } }"
-        class="text-center md:text-left"
-      >
-        <h1 class="text-4xl md:text-6xl font-bold text-white drop-shadow-lg mb-4">
-          Hello, Friend!
+      <!-- Welcome Text with Typewriter Effect -->
+      <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl p-6 md:p-8 shadow-2xl border-4 border-white/30 backdrop-blur-sm">
+        <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-4 min-h-[1.2em]">
+          {{ displayedLine1 }}<span v-if="currentLine === 1" class="animate-blink">|</span>
         </h1>
-        <p class="text-xl md:text-2xl text-yellow-300 drop-shadow-md mb-2">
-          Welcome to our English class!
+        <p class="text-lg md:text-xl text-yellow-300 drop-shadow-md mb-2 min-h-[1.2em]">
+          {{ displayedLine2 }}<span v-if="currentLine === 2" class="animate-blink">|</span>
         </p>
-        <p class="text-lg md:text-xl text-white/90 drop-shadow-md">
-          My name is Bugs Bunny. What is your name?
+        <p class="text-base md:text-lg text-white/90 drop-shadow-md min-h-[1.2em]">
+          {{ displayedLine3 }}<span v-if="currentLine === 3" class="animate-blink">|</span>
         </p>
       </div>
     </div>
@@ -115,4 +110,54 @@
 definePageMeta({
   layout: false
 })
+
+// Typewriter effect
+const line1 = 'Hello, Friend!'
+const line2 = 'Welcome to our English class!'
+const line3 = 'My name is Bugs Bunny. What is your name?'
+
+const displayedLine1 = ref('')
+const displayedLine2 = ref('')
+const displayedLine3 = ref('')
+const currentLine = ref(1)
+
+const typeSpeed = 80 // ms per character
+
+const typeText = (text: string, displayRef: Ref<string>, lineNum: number) => {
+  return new Promise<void>((resolve) => {
+    let i = 0
+    currentLine.value = lineNum
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        displayRef.value += text[i]
+        i++
+      } else {
+        clearInterval(interval)
+        resolve()
+      }
+    }, typeSpeed)
+  })
+}
+
+onMounted(async () => {
+  await new Promise(r => setTimeout(r, 500)) // Initial delay
+  await typeText(line1, displayedLine1, 1)
+  await new Promise(r => setTimeout(r, 300)) // Pause between lines
+  await typeText(line2, displayedLine2, 2)
+  await new Promise(r => setTimeout(r, 300))
+  await typeText(line3, displayedLine3, 3)
+  await new Promise(r => setTimeout(r, 500))
+  currentLine.value = 0 // Hide cursor after typing complete
+})
 </script>
+
+<style scoped>
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 0.8s infinite;
+}
+</style>
