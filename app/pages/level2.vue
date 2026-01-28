@@ -1,5 +1,13 @@
 <template>
-  <div class="min-h-screen p-4 md:p-8 bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-yellow-100 via-orange-50 to-yellow-100">
+  <div
+    class="min-h-screen relative bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/images/bg/bg-in.png')"
+  >
+    <!-- Dark Overlay 50% -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 min-h-screen p-4 md:p-8">
     <div class="max-w-6xl mx-auto">
       <NuxtLink 
         to="/" 
@@ -30,6 +38,7 @@
       <main class="bg-white/30 backdrop-blur-md rounded-3xl border border-white/50 shadow-xl p-6 md:p-10 min-h-[600px]">
         <AudioGame />
       </main>
+    </div>
     </div>
   </div>
 </template>

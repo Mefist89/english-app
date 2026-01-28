@@ -26,7 +26,7 @@
     <!-- Game Area -->
     <div class="relative">
       <!-- Top Row -->
-      <div class="flex justify-center gap-4 md:gap-6 mb-4">
+      <div class="flex justify-center gap-3 md:gap-4 mb-2">
         <div
           v-for="item in topItems"
           :key="item.id"
@@ -35,14 +35,14 @@
           draggable="true"
           @dragstart="handleDragStart($event, item.id)"
         >
-          <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-16 h-16 md:w-20 md:h-20 object-contain pointer-events-none" />
+          <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-20 h-20 md:w-24 md:h-24 object-contain pointer-events-none" />
         </div>
       </div>
 
       <!-- Middle Section: Left + Bag + Right -->
       <div class="flex justify-between items-center">
         <!-- Left Column -->
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
           <div
             v-for="item in leftItems"
             :key="item.id"
@@ -51,13 +51,13 @@
             draggable="true"
             @dragstart="handleDragStart($event, item.id)"
           >
-            <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-16 h-16 md:w-20 md:h-20 object-contain pointer-events-none" />
+            <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-20 h-20 md:w-24 md:h-24 object-contain pointer-events-none" />
           </div>
         </div>
 
         <!-- Bag in Center -->
         <div
-          class="bag-drop-zone relative transition-all duration-300 mx-4"
+          class="bag-drop-zone relative transition-all duration-300 mx-2"
           :class="{ 'scale-110 ring-4 ring-yellow-400': isDragOver }"
           @dragover.prevent="isDragOver = true"
           @dragleave="isDragOver = false"
@@ -78,7 +78,7 @@
         </div>
 
         <!-- Right Column -->
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
           <div
             v-for="item in rightItems"
             :key="item.id"
@@ -87,13 +87,13 @@
             draggable="true"
             @dragstart="handleDragStart($event, item.id)"
           >
-            <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-16 h-16 md:w-20 md:h-20 object-contain pointer-events-none" />
+            <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-20 h-20 md:w-24 md:h-24 object-contain pointer-events-none" />
           </div>
         </div>
       </div>
 
       <!-- Bottom Row -->
-      <div class="flex justify-center gap-4 md:gap-6 mt-4">
+      <div class="flex justify-center gap-3 md:gap-4 mt-2">
         <div
           v-for="item in bottomItems"
           :key="item.id"
@@ -102,7 +102,7 @@
           draggable="true"
           @dragstart="handleDragStart($event, item.id)"
         >
-          <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-16 h-16 md:w-20 md:h-20 object-contain pointer-events-none" />
+          <img :src="'/images/level3/' + item.image" :alt="item.name" class="w-20 h-20 md:w-24 md:h-24 object-contain pointer-events-none" />
         </div>
       </div>
     </div>

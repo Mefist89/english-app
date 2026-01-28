@@ -1,7 +1,13 @@
 <template>
   <div
-    class="min-h-screen p-4 md:p-8 bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-100 to-indigo-200"
+    class="min-h-screen relative bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/images/bg/bg-in.png')"
   >
+    <!-- Dark Overlay 50% -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 min-h-screen p-4 md:p-8">
     <div class="max-w-6xl mx-auto">
       <NuxtLink
         to="/"
@@ -47,6 +53,7 @@
       >
         <MatchingGame />
       </main>
+    </div>
     </div>
   </div>
 </template>

@@ -59,6 +59,7 @@
       >
         <div class="text-4xl mb-2">1️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-blue-600">Level 1</h2>
+        <p class="text-sm text-gray-500 mt-1">Match words</p>
       </NuxtLink>
 
       <NuxtLink
@@ -67,6 +68,7 @@
       >
         <div class="text-4xl mb-2">2️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-teal-600">Level 2</h2>
+        <p class="text-sm text-gray-500 mt-1">Listen & choose</p>
       </NuxtLink>
 
       <NuxtLink
@@ -75,6 +77,7 @@
       >
         <div class="text-4xl mb-2">3️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-purple-600">Level 3</h2>
+        <p class="text-sm text-gray-500 mt-1">Pack winter bag</p>
       </NuxtLink>
 
       <NuxtLink
@@ -83,6 +86,7 @@
       >
         <div class="text-4xl mb-2">4️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-pink-600">Level 4</h2>
+        <p class="text-sm text-gray-500 mt-1">Coming soon</p>
       </NuxtLink>
 
       <NuxtLink
@@ -91,6 +95,7 @@
       >
         <div class="text-4xl mb-2">5️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-orange-600">Level 5</h2>
+        <p class="text-sm text-gray-500 mt-1">Coming soon</p>
       </NuxtLink>
 
       <NuxtLink
@@ -99,6 +104,7 @@
       >
         <div class="text-4xl mb-2">6️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-green-600">Level 6</h2>
+        <p class="text-sm text-gray-500 mt-1">Coming soon</p>
       </NuxtLink>
     </div>
     </div>
