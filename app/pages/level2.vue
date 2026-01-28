@@ -9,13 +9,6 @@
     <!-- Content -->
     <div class="relative z-10 min-h-screen p-4 md:p-8">
     <div class="max-w-6xl mx-auto">
-      <NuxtLink 
-        to="/" 
-        class="group inline-flex items-center px-6 py-3 bg-white/80 backdrop-blur-md rounded-full shadow-sm hover:shadow-md transition-all duration-300 mb-8 border border-white/50 text-orange-600 font-semibold"
-      >
-        <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span> Back to Home
-      </NuxtLink>
-
       <header class="relative overflow-hidden rounded-3xl bg-white/40 backdrop-blur-xl border border-white/50 shadow-xl p-8 mb-8 flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="relative z-10 text-center md:text-left">
           <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 mb-2 drop-shadow-sm">
@@ -27,7 +20,12 @@
         </div>
         
         <div class="relative z-10 w-32 md:w-40 transform hover:scale-110 transition-transform duration-300">
-          <BugsBunny message="Listen carefully!" animate />
+          <Character
+            name="Sylvester"
+            image="/images/characters/slyvester.png"
+            message="Listen carefully!"
+            animate
+          />
         </div>
         
         <!-- Decorative Background Elements -->
@@ -38,6 +36,24 @@
       <main class="bg-white/30 backdrop-blur-md rounded-3xl border border-white/50 shadow-xl p-6 md:p-10 min-h-[600px]">
         <AudioGame />
       </main>
+
+      <!-- Navigation Buttons -->
+      <div class="flex justify-between items-center mt-8">
+        <NuxtLink
+          to="/"
+          class="group inline-flex items-center px-6 py-3 bg-white/80 backdrop-blur-md rounded-full shadow-sm hover:shadow-md transition-all duration-300 border border-white/50 text-gray-600 font-semibold hover:bg-white"
+        >
+          <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
+          Menu
+        </NuxtLink>
+        <NuxtLink
+          to="/level3"
+          class="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold"
+        >
+          Next Level
+          <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+        </NuxtLink>
+      </div>
     </div>
     </div>
   </div>

@@ -86,7 +86,7 @@
       >
         <div class="text-4xl mb-2">4️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-pink-600">Level 4</h2>
-        <p class="text-sm text-gray-500 mt-1">Coming soon</p>
+        <p class="text-sm text-gray-500 mt-1">Guess shadow</p>
       </NuxtLink>
 
       <NuxtLink
