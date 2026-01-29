@@ -126,12 +126,20 @@
       <p class="text-3xl font-bold text-yellow-300 drop-shadow-lg mb-4 animate-bounce">
         The Tree is Decorated! 🎄
       </p>
-      <button
-        @click="resetGame"
-        class="px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
-      >
-        Play Again!
-      </button>
+      <div class="flex justify-center gap-4">
+        <button
+          @click="resetGame"
+          class="px-8 py-4 bg-white/80 hover:bg-white text-gray-700 text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
+        >
+          Play Again
+        </button>
+        <NuxtLink
+          to="/level6/complete"
+          class="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
+        >
+          Continue →
+        </NuxtLink>
+      </div>
     </div>
 
     <!-- Feedback Message -->

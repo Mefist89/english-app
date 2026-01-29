@@ -70,12 +70,20 @@
       <p class="text-3xl font-bold text-yellow-300 drop-shadow-lg mb-4 animate-bounce">
         Bugs Bunny is Ready for Winter!
       </p>
-      <button
-        @click="resetGame"
-        class="px-8 py-4 bg-gradient-to-r from-purple-400 to-pink-600 hover:from-purple-500 hover:to-pink-700 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
-      >
-        Play Again!
-      </button>
+      <div class="flex justify-center gap-4">
+        <button
+          @click="resetGame"
+          class="px-8 py-4 bg-white/80 hover:bg-white text-gray-700 text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
+        >
+          Play Again
+        </button>
+        <NuxtLink
+          to="/level5/complete"
+          class="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
+        >
+          Continue →
+        </NuxtLink>
+      </div>
     </div>
 
     <!-- Feedback Message -->

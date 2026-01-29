@@ -79,18 +79,26 @@
         <div class="text-7xl mb-4">
           {{ score >= totalQuestions * 0.7 ? '🎉' : '👍' }}
         </div>
-        <h2 class="text-4xl font-black text-purple-600 mb-2">
+        <h2 class="text-4xl font-black text-cyan-600 mb-2">
           {{ score >= totalQuestions * 0.7 ? 'Great Job!' : 'Good Try!' }}
         </h2>
         <p class="text-xl text-gray-600 mb-6">
           You got {{ score }} out of {{ totalQuestions }} correct!
         </p>
-        <button
-          @click="resetGame"
-          class="w-full py-4 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
-        >
-          Play Again
-        </button>
+        <div class="flex flex-col gap-3">
+          <button
+            @click="resetGame"
+            class="w-full py-4 bg-gray-200 hover:bg-gray-300 text-gray-700 text-xl font-bold rounded-full transition-all hover:scale-105"
+          >
+            Play Again
+          </button>
+          <NuxtLink
+            to="/level4/complete"
+            class="w-full py-4 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all inline-block"
+          >
+            Continue →
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>

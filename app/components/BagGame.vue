@@ -110,12 +110,20 @@
     <!-- Win Message -->
     <div v-if="isComplete" class="text-center mt-8">
       <p class="text-3xl font-bold text-yellow-300 drop-shadow-lg mb-4 animate-bounce">You Win!</p>
-      <button
-        @click="resetGame"
-        class="px-8 py-4 bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
-      >
-        Play Again!
-      </button>
+      <div class="flex justify-center gap-4">
+        <button
+          @click="resetGame"
+          class="px-8 py-4 bg-white/80 hover:bg-white text-gray-700 text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
+        >
+          Play Again
+        </button>
+        <NuxtLink
+          to="/level3/complete"
+          class="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 transition-all"
+        >
+          Continue →
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
