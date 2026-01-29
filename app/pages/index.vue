@@ -13,17 +13,36 @@
       </div>
 
       <!-- Welcome Text with Typewriter Effect -->
-      <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl p-6 md:p-8 shadow-2xl border-4 border-white/30 backdrop-blur-sm">
-        <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-4 min-h-[1.2em]">
-          {{ displayedLine1 }}<span v-if="currentLine === 1" class="animate-blink">|</span>
-        </h1>
-        <p class="text-lg md:text-xl text-yellow-300 drop-shadow-md mb-2 min-h-[1.2em]">
-          {{ displayedLine2 }}<span v-if="currentLine === 2" class="animate-blink">|</span>
-        </p>
-        <p class="text-base md:text-lg text-white/90 drop-shadow-md min-h-[1.2em]">
-          {{ displayedLine3 }}<span v-if="currentLine === 3" class="animate-blink">|</span>
-        </p>
-      </div>
+      <Transition name="box">
+        <div
+          v-if="showBox"
+          class="relative bg-gradient-to-br from-sky-400 to-blue-600 rounded-3xl p-8 md:p-10 shadow-2xl border-4 border-white/40 backdrop-blur-sm w-[420px] md:w-[500px] min-h-[200px]"
+        >
+          <!-- Audio Button -->
+          <button
+            @click="playAudio"
+            class="absolute -right-4 -top-4 w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300 border-3 border-white/50"
+            :class="{ 'animate-pulse': isPlaying }"
+          >
+            <svg v-if="!isPlaying" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+          </button>
+
+          <h1 class="text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-4 min-h-[1.4em] font-serif italic">
+            {{ displayedLine1 }}<span v-if="currentLine === 1" class="animate-blink">|</span>
+          </h1>
+          <p class="text-lg md:text-xl text-amber-200 drop-shadow-md mb-3 min-h-[1.4em] font-serif italic">
+            {{ displayedLine2 }}<span v-if="currentLine === 2" class="animate-blink">|</span>
+          </p>
+          <p class="text-base md:text-lg text-sky-100 drop-shadow-md min-h-[1.4em] font-serif italic">
+            {{ displayedLine3 }}<span v-if="currentLine === 3" class="animate-blink">|</span>
+          </p>
+        </div>
+      </Transition>
     </div>
 
     <!-- Start Button -->
@@ -116,10 +135,33 @@ const line1 = 'Hello, Friend!'
 const line2 = 'Welcome to our English class!'
 const line3 = 'My name is Bugs Bunny. What is your name?'
 
+const showBox = ref(false)
 const displayedLine1 = ref('')
 const displayedLine2 = ref('')
 const displayedLine3 = ref('')
-const currentLine = ref(1)
+const currentLine = ref(0)
+
+// Audio
+const isPlaying = ref(false)
+const audio = ref<HTMLAudioElement | null>(null)
+
+const playAudio = () => {
+  if (!audio.value) {
+    audio.value = new Audio('/audio/bugs-bunny-welcome.mp3')
+    audio.value.onended = () => {
+      isPlaying.value = false
+    }
+  }
+
+  if (isPlaying.value) {
+    audio.value.pause()
+    audio.value.currentTime = 0
+    isPlaying.value = false
+  } else {
+    audio.value.play()
+    isPlaying.value = true
+  }
+}
 
 const typeSpeed = 80 // ms per character
 
@@ -140,9 +182,16 @@ const typeText = (text: string, displayRef: Ref<string>, lineNum: number) => {
 }
 
 onMounted(async () => {
-  await new Promise(r => setTimeout(r, 500)) // Initial delay
+  // Show box after 1 second
+  await new Promise(r => setTimeout(r, 1000))
+  showBox.value = true
+
+  // Wait for box animation to complete
+  await new Promise(r => setTimeout(r, 600))
+
+  // Start typing
   await typeText(line1, displayedLine1, 1)
-  await new Promise(r => setTimeout(r, 300)) // Pause between lines
+  await new Promise(r => setTimeout(r, 300))
   await typeText(line2, displayedLine2, 2)
   await new Promise(r => setTimeout(r, 300))
   await typeText(line3, displayedLine3, 3)
@@ -159,5 +208,19 @@ onMounted(async () => {
 
 .animate-blink {
   animation: blink 0.8s infinite;
+}
+
+.box-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.box-enter-from {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+}
+
+.box-enter-to {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 </style>
