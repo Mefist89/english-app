@@ -183,6 +183,50 @@
         </svg>
       </NuxtLink>
     </div>
+
+    <!-- Final Celebration Overlay -->
+    <Transition name="celebration">
+      <div v-if="showFinalCelebration" class="fixed inset-0 z-[100] flex items-center justify-center">
+        <!-- Background Image -->
+        <img
+          src="/audio/bg_secret.png"
+          alt="Celebration"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+
+        <!-- Overlay gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center p-8">
+          <!-- Emojis -->
+          <div class="text-6xl md:text-8xl mb-6 animate-bounce-slow">
+            🎄🎅🎁🎉🌟
+          </div>
+
+          <!-- Thank you text -->
+          <h1 class="text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-lg animate-pulse-glow">
+            Thank You!
+          </h1>
+          <p class="text-2xl md:text-3xl text-yellow-300 font-bold mb-8 drop-shadow-md">
+            Thank you for playing the game!
+          </p>
+
+          <!-- Stars decoration -->
+          <div class="flex justify-center gap-2 mb-8">
+            <span v-for="i in 5" :key="i" class="text-4xl md:text-5xl animate-star" :style="{ animationDelay: `${i * 0.2}s` }">⭐</span>
+          </div>
+
+          <!-- Back to menu button -->
+          <NuxtLink
+            to="/"
+            class="inline-block px-10 py-5 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 text-white rounded-full font-bold text-xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110"
+          >
+            Back to Menu
+          </NuxtLink>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -233,6 +277,7 @@ const gameOver = ref(false)
 const isChecking = ref(false)
 const selectedAnswer = ref<string | null>(null)
 const isCorrect = ref<boolean | null>(null)
+const showFinalCelebration = ref(false)
 
 // Computed percentages for progress bars
 const santaGiftsPercent = computed(() => (santaGifts.value / maxGifts) * 100)
@@ -316,6 +361,18 @@ const checkAnswer = async (answer: string) => {
         origin: { y: 0.6 },
         colors: ['#ef4444', '#22c55e', '#fbbf24', '#ffffff']
       })
+
+      // Show final celebration after 5 seconds
+      setTimeout(() => {
+        showFinalCelebration.value = true
+        // More confetti for final celebration
+        confetti({
+          particleCount: 200,
+          spread: 120,
+          origin: { y: 0.5 },
+          colors: ['#ef4444', '#22c55e', '#fbbf24', '#ffffff', '#ec4899']
+        })
+      }, 5000)
     }
   } else {
     // Next round
@@ -329,6 +386,7 @@ const checkAnswer = async (answer: string) => {
 }
 
 const restartGame = () => {
+  showFinalCelebration.value = false
   initGame()
 }
 
@@ -408,5 +466,65 @@ onMounted(() => {
 .attack-effect-leave-to {
   opacity: 0;
   transform: translateY(-50%) scale(2);
+}
+
+/* Final Celebration */
+.celebration-enter-active {
+  transition: all 0.8s ease-out;
+}
+
+.celebration-leave-active {
+  transition: all 0.5s ease-in;
+}
+
+.celebration-enter-from {
+  opacity: 0;
+  transform: scale(1.2);
+}
+
+.celebration-leave-to {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 0, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 0, 0.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes star {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3) rotate(15deg);
+    opacity: 0.8;
+  }
+}
+
+.animate-star {
+  animation: star 1s ease-in-out infinite;
 }
 </style>
