@@ -1,5 +1,17 @@
 <template>
-  <div class="min-h-screen relative bg-cover bg-center bg-no-repeat" style="background-image: url('/images/bg/bg.png')">
+  <div class="min-h-screen relative bg-cover bg-center bg-no-repeat overflow-hidden" style="background-image: url('/images/bg/bg.png')">
+    <!-- Falling Snow -->
+    <div class="absolute inset-0 pointer-events-none z-20">
+      <img
+        v-for="flake in snowflakes"
+        :key="flake.id"
+        :src="flake.image"
+        :style="flake.style"
+        class="absolute snowflake"
+        alt=""
+      />
+    </div>
+
     <!-- Dark Overlay 30% -->
     <div class="absolute inset-0 bg-black/40"></div>
 
@@ -130,6 +142,57 @@ definePageMeta({
   layout: false
 })
 
+// Snowflakes
+interface Snowflake {
+  id: number
+  image: string
+  style: Record<string, string>
+}
+
+const snowflakeImages = [
+  '/images/ui/snowflake-1.png',
+  '/images/ui/snowflake-2.png',
+  '/images/ui/snowflake-3.png',
+  '/images/ui/snowflake-4.png',
+  '/images/ui/snowflake-5.png',
+  '/images/ui/snowflake-6.png',
+]
+
+const snowflakes = ref<Snowflake[]>([])
+
+const createSnowflakes = () => {
+  const flakes: Snowflake[] = []
+  const count = 30 // Number of snowflakes
+
+  for (let i = 0; i < count; i++) {
+    const size = Math.random() * 30 + 20 // 20-50px
+    const left = Math.random() * 100 // 0-100%
+    const delay = Math.random() * 15 // 0-15s delay
+    const duration = Math.random() * 10 + 15 // 15-25s fall duration
+    const drift = Math.random() * 40 - 20 // -20 to 20px horizontal drift
+
+    flakes.push({
+      id: i,
+      image: snowflakeImages[Math.floor(Math.random() * snowflakeImages.length)]!,
+      style: {
+        left: `${left}%`,
+        width: `${size}px`,
+        height: `${size}px`,
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+        '--drift': `${drift}px`,
+        opacity: `${Math.random() * 0.5 + 0.3}`, // 0.3-0.8 opacity
+      }
+    })
+  }
+
+  snowflakes.value = flakes
+}
+
+onMounted(() => {
+  createSnowflakes()
+})
+
 // Typewriter effect
 const line1 = 'Hello, Friend!'
 const line2 = 'Welcome to our English class!'
@@ -222,5 +285,24 @@ onMounted(async () => {
 .box-enter-to {
   opacity: 1;
   transform: scale(1) translateY(0);
+}
+
+/* Snowfall animation */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-100px) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(var(--drift, 0px)) rotate(180deg);
+  }
+  100% {
+    transform: translateY(100vh) translateX(calc(var(--drift, 0px) * -1)) rotate(360deg);
+  }
+}
+
+.snowflake {
+  animation: snowfall linear infinite;
+  will-change: transform;
+  filter: brightness(0) invert(1);
 }
 </style>

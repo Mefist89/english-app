@@ -41,7 +41,7 @@
           <img
             :src="currentClothingImage"
             :alt="currentItemName"
-            class="w-[250px] h-[300px] md:w-[300px] md:h-[350px] object-contain drop-shadow-2xl"
+            class="w-[307px] h-96 md:w-96 md:h-[461px] object-contain drop-shadow-2xl"
           />
         </div>
       </Transition>

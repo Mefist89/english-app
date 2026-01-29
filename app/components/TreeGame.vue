@@ -1,7 +1,7 @@
 <template>
   <div class="tree-game select-none">
     <!-- Level Indicator -->
-    <div class="text-center mb-4">
+    <div class="text-center mb-1">
       <p class="text-2xl font-bold text-white drop-shadow">
         Level {{ currentLevel }} / {{ totalLevels }}
       </p>
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Progress Bar for current level -->
-    <div class="max-w-md mx-auto mb-6">
+    <div class="max-w-md mx-auto mb-1">
       <div class="w-full h-4 bg-green-800 rounded-full overflow-hidden shadow-inner">
         <div
           class="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 transition-all duration-500"
@@ -29,7 +29,7 @@
     </div>
 
     <!-- Tree Area -->
-    <div class="relative flex justify-center mb-2">
+    <div class="relative flex justify-center mb-0">
       <!-- Tree Image -->
       <div class="relative">
         <img
@@ -67,7 +67,7 @@
               @drop.prevent="handleDrop($event, slot.id)"
             >
               <div
-                class="px-4 py-2 rounded-xl font-bold text-lg shadow-lg transition-all duration-300"
+                class="px-7 py-4 rounded-xl font-bold text-2xl shadow-lg transition-all duration-300"
                 :class="getSlotClass(slot)"
               >
                 <span v-if="!slot.filled">{{ slot.word }}</span>
@@ -89,7 +89,7 @@
       <div
         v-if="!isTransitioning"
         :key="currentLevel"
-        class="flex flex-wrap justify-center gap-4 p-4 bg-white/20 backdrop-blur rounded-2xl"
+        class="flex flex-wrap justify-center gap-1 p-1 bg-white/20 backdrop-blur rounded-2xl"
       >
         <div
           v-for="item in currentItems"
@@ -201,25 +201,25 @@ const allItems: Omit<Item, 'used'>[] = [
 
 const slotPositions = [
   // Level 1 (top)
-  { top: '20%', left: '35%' },
+  { top: '20%', left: '25%' },
   { top: '20%', left: '50%' },
-  { top: '20%', left: '65%' },
+  { top: '20%', left: '75%' },
   // Level 2
-  { top: '35%', left: '28%' },
+  { top: '35%', left: '20%' },
   { top: '35%', left: '50%' },
-  { top: '35%', left: '72%' },
+  { top: '35%', left: '80%' },
   // Level 3
-  { top: '50%', left: '22%' },
+  { top: '50%', left: '15%' },
   { top: '50%', left: '50%' },
-  { top: '50%', left: '78%' },
+  { top: '50%', left: '85%' },
   // Level 4
-  { top: '65%', left: '18%' },
+  { top: '65%', left: '10%' },
   { top: '65%', left: '50%' },
-  { top: '65%', left: '82%' },
+  { top: '65%', left: '90%' },
   // Level 5 (bottom - characters)
-  { top: '80%', left: '25%' },
+  { top: '80%', left: '18%' },
   { top: '80%', left: '50%' },
-  { top: '80%', left: '75%' },
+  { top: '80%', left: '82%' },
 ]
 
 // Helper to get image path based on level

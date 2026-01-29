@@ -8,9 +8,9 @@
 
     <!-- Content -->
     <div class="relative z-10 min-h-screen p-4 md:p-8">
-      <div class="max-w-[1267px] mx-auto scale-[0.8] origin-top">
+      <div class="max-w-[1520px] mx-auto scale-[0.8] origin-top">
         <header
-          class="relative overflow-hidden rounded-3xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl p-6 mb-6 flex flex-col md:flex-row items-center justify-between gap-6"
+          class="relative overflow-visible rounded-3xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl px-8 py-10 mb-6 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div class="relative z-10">
             <h1
@@ -21,6 +21,17 @@
             <p class="text-lg text-white/90 font-medium tracking-wide drop-shadow">
               Dress Up Bugs Bunny!
             </p>
+          </div>
+
+          <div
+            class="relative z-10 w-32 md:w-40 transform hover:scale-110 transition-transform duration-300"
+          >
+            <Character
+              name="Santa Claus"
+              image="/images/characters/santa_claus.png"
+              message="Help Bugs Bunny!"
+              animate
+            />
           </div>
 
           <!-- Decorative -->
@@ -44,6 +55,13 @@
           >
             <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
             Menu
+          </NuxtLink>
+          <NuxtLink
+            to="/level6"
+            class="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold"
+          >
+            Next Level
+            <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </NuxtLink>
         </div>
       </div>

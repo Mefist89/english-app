@@ -58,6 +58,13 @@
             <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
             Menu
           </NuxtLink>
+          <NuxtLink
+            to="/"
+            class="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold"
+          >
+            Finish
+            <span class="ml-2 group-hover:translate-x-1 transition-transform">🎉</span>
+          </NuxtLink>
         </div>
       </div>
     </div>
