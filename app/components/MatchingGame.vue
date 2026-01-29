@@ -1,5 +1,5 @@
 <template>
-  <div class="matching-game relative min-h-[600px] flex flex-col justify-between pb-32">
+  <div class="matching-game relative min-h-[600px] flex flex-col justify-between pb-52">
     <!-- Confetti Canvas -->
     <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
 

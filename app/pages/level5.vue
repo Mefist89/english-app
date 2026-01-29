@@ -28,7 +28,7 @@
           >
             <Character
               name="Santa Claus"
-              image="/images/characters/santa_claus.png"
+              image="/images/characters/santa-b-l.png"
               message="Help Bugs Bunny!"
               animate
             />

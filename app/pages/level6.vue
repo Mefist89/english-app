@@ -25,7 +25,7 @@
 
           <div
             v-if="showCharacter"
-            class="relative z-10 w-32 md:w-40 transform transition-all duration-500"
+            class="relative z-10 w-24 md:w-32 transform transition-all duration-500"
             :class="showCharacter ? 'opacity-100 scale-100' : 'opacity-0 scale-50'"
           >
             <Character

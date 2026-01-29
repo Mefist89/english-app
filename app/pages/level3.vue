@@ -24,7 +24,7 @@
         </div>
 
         <div
-          class="relative z-10 w-32 md:w-40 transform hover:scale-110 transition-transform duration-300"
+          class="relative z-10 w-24 md:w-32 transform hover:scale-110 transition-transform duration-300"
         >
           <Character
             name="Lola Bunny"

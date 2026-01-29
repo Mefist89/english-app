@@ -89,7 +89,7 @@
       <div
         v-if="!isTransitioning"
         :key="currentLevel"
-        class="flex flex-wrap justify-center gap-1 p-1 bg-white/20 backdrop-blur rounded-2xl"
+        class="flex flex-wrap justify-center gap-1 p-1 bg-white/20 backdrop-blur rounded-2xl -mt-8"
       >
         <div
           v-for="item in currentItems"
@@ -195,7 +195,7 @@ const allItems: Omit<Item, 'used'>[] = [
   { id: 12, name: 'Snow Globe', image: 'snow-globe.png', level: 4 },
   // Level 5 - Characters
   { id: 13, name: 'Bunny', image: 'banny-winter.png', level: 5 },
-  { id: 14, name: 'Santa', image: 'santa-b.png', level: 5 },
+  { id: 14, name: 'Santa', image: 'santa-b-r.png', level: 5 },
   { id: 15, name: 'Grinch', image: 'grinch.png', level: 5 },
 ]
 
