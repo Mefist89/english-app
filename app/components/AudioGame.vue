@@ -67,14 +67,11 @@
     </div>
 
     <!-- Celebration Overlay -->
-     <div v-if="isComplete" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md">
+     <div v-if="showCelebration" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md">
         <div class="bg-white rounded-[3rem] p-12 text-center shadow-2xl animate-in zoom-in fade-in duration-500 max-w-lg mx-6">
             <div class="text-8xl mb-4">🏆</div>
             <h2 class="text-5xl font-black text-indigo-600 mb-2 font-round">Amazing!</h2>
-            <p class="text-xl text-gray-500 mb-8">You have great listening ears!</p>
-            <button @click="resetGame" class="w-full py-5 bg-indigo-600 hover:bg-indigo-700 text-white text-2xl font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-                Play Again
-            </button>
+            <p class="text-xl text-gray-500">You have great listening ears!</p>
         </div>
      </div>
 
@@ -120,6 +117,7 @@ const items = ref<Item[]>(shuffle(structuredClone(allItems)));
 // Game State
 const selectedItem = ref<Item | null>(null);
 const isPlaying = ref(false);
+const showCelebration = ref(false);
 
 const lines = ref<AudioLine[]>([
   { id: 1, text: "Put on your Scarf", targetId: 1, filledItem: null },
@@ -139,6 +137,17 @@ const currentLineIndex = computed(() => {
 });
 
 const isComplete = computed(() => lines.value.every(line => line.filledItem));
+
+// Watch for game completion
+watch(isComplete, (complete) => {
+  if (complete) {
+    showCelebration.value = true;
+    // Navigate to complete page after delay
+    setTimeout(() => {
+      navigateTo('/level2/complete');
+    }, 2000);
+  }
+});
 
 // Actions
 const playLine = (line: AudioLine) => {
@@ -202,6 +211,7 @@ const attemptMatch = () => {
 const resetGame = () => {
   items.value = shuffle(structuredClone(allItems));
   selectedItem.value = null;
+  showCelebration.value = false;
   lines.value.forEach(l => l.filledItem = null);
 };
 

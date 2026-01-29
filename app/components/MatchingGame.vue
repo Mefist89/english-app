@@ -139,6 +139,10 @@ const checkMatch = () => {
     if (isGameComplete.value) {
       message.value = "YOU WON! 🎉";
       triggerMassiveConfetti();
+      // Navigate to complete page after a short delay
+      setTimeout(() => {
+        navigateTo('/level1/complete');
+      }, 2000);
     }
   } else {
     // Wrong match
