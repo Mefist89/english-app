@@ -71,7 +71,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const characterName = "Bugs Bunny";
-const characterImage = "/images/characters/bugs-bunny.png";
+const characterImage = "/images/characters/banny-winter.png";
 const isAnimating = ref(props.animate);
 
 // Function to trigger animation

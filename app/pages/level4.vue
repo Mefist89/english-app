@@ -28,7 +28,7 @@
           >
             <Character
               name="Road Runner"
-              image="/images/characters/road-runner.png"
+              image="/images/characters/road-runner-winter.png"
               message="What's hiding?"
               animate
             />

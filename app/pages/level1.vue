@@ -28,7 +28,7 @@
         >
           <Character
             name="Daffy Duck"
-            image="/images/characters/daffy-duck.png"
+            image="/images/characters/daffy-duck-winter.png"
             message="Let's find pairs!"
             animate
           />

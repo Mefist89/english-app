@@ -22,7 +22,7 @@
         <div class="relative z-10 w-32 md:w-40 transform hover:scale-110 transition-transform duration-300">
           <Character
             name="Sylvester"
-            image="/images/characters/slyvester.png"
+            image="/images/characters/slyvester-winter.png"
             message="Listen carefully!"
             animate
           />

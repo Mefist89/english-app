@@ -28,7 +28,7 @@
         >
           <Character
             name="Lola Bunny"
-            image="/images/characters/Lola_Bunny.png"
+            image="/images/characters/Lola-Bunny-winter.png"
             message="Drag winter items!"
             animate
           />
