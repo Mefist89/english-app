@@ -73,6 +73,23 @@
             </div>
           </div>
 
+          <!-- Secret Level Unlocked Banner -->
+          <div class="mb-8 bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 rounded-2xl p-1 animate-pulse-slow">
+            <div class="bg-gray-900 rounded-xl p-6 text-center">
+              <div class="text-4xl mb-3">🎅 vs 💚</div>
+              <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-yellow-400 mb-2">
+                Boss Battle Unlocked!
+              </h3>
+              <p class="text-gray-300 mb-4">Santa Claus vs Grinch</p>
+              <NuxtLink
+                to="/secret"
+                class="inline-block px-8 py-4 bg-gradient-to-r from-red-600 via-yellow-500 to-green-600 hover:from-red-500 hover:via-yellow-400 hover:to-green-500 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:scale-110 animate-bounce-slow"
+              >
+                Start Battle!
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Action Buttons -->
           <div class="flex flex-col sm:flex-row justify-center gap-4">
             <NuxtLink
@@ -95,6 +112,13 @@
 </template>
 
 <script setup lang="ts">
+// Mark level 6 as completed to unlock secret level
+const { completeLevel6 } = useGameProgress()
+
+onMounted(() => {
+  completeLevel6()
+})
+
 const words = [
   { id: 1, name: 'Boots', image: '/images/level3/boots.png', audio: '/audio/level6/boots.mp3' },
   { id: 2, name: 'Scarf', image: '/images/level3/scarf.png', audio: '/audio/level6/scarf.mp3' },
@@ -149,5 +173,18 @@ onUnmounted(() => {
 
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
 }
 </style>

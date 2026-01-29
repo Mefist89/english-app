@@ -5,7 +5,16 @@
 /* Custom styles for the English learning app */
 @layer base {
   body {
-    @apply bg-gradient-to-br from-blue-50 to-purple-50;
+    @apply bg-gradient-to-br from-blue-50 to-purple-50 leading-relaxed;
+  }
+
+  /* Better readability for children */
+  h1, h2, h3, h4, h5, h6 {
+    @apply leading-tight;
+  }
+
+  p, span, button, a {
+    @apply leading-relaxed;
   }
 }
 

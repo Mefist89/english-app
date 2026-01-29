@@ -44,13 +44,13 @@
             </svg>
           </button>
 
-          <h1 class="text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-4 min-h-[1.4em] font-serif italic">
+          <h1 class="text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-4 min-h-[1.4em] leading-relaxed">
             {{ displayedLine1 }}<span v-if="currentLine === 1" class="animate-blink">|</span>
           </h1>
-          <p class="text-lg md:text-xl text-amber-200 drop-shadow-md mb-3 min-h-[1.4em] font-serif italic">
+          <p class="text-lg md:text-xl text-amber-200 drop-shadow-md mb-3 min-h-[1.4em] leading-relaxed">
             {{ displayedLine2 }}<span v-if="currentLine === 2" class="animate-blink">|</span>
           </p>
-          <p class="text-base md:text-lg text-sky-100 drop-shadow-md min-h-[1.4em] font-serif italic">
+          <p class="text-base md:text-lg text-sky-100 drop-shadow-md min-h-[1.4em] leading-relaxed">
             {{ displayedLine3 }}<span v-if="currentLine === 3" class="animate-blink">|</span>
           </p>
         </div>
@@ -132,6 +132,22 @@
         <h2 class="text-lg md:text-xl font-bold text-green-600">Level 6</h2>
         <p class="text-sm text-gray-500 mt-1">Decorate tree</p>
       </NuxtLink>
+
+      <!-- Secret Level - Only visible after completing level 6 -->
+      <Transition name="secret">
+        <NuxtLink
+          v-if="isSecretLevelUnlocked"
+          to="/secret"
+          class="card hover:scale-105 cursor-pointer text-center col-span-3 bg-gradient-to-r from-red-100 via-yellow-100 to-green-100 border-2 border-red-300 relative overflow-hidden"
+        >
+          <div class="absolute inset-0 bg-gradient-to-r from-red-500/10 via-yellow-500/10 to-green-500/10 animate-pulse"></div>
+          <div class="relative z-10">
+            <div class="text-4xl mb-2">🎅 vs 💚</div>
+            <h2 class="text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-green-600">Boss Battle</h2>
+            <p class="text-sm text-gray-600 mt-1">Santa Claus vs Grinch</p>
+          </div>
+        </NuxtLink>
+      </Transition>
     </div>
     </div>
   </div>
@@ -141,6 +157,9 @@
 definePageMeta({
   layout: false
 })
+
+// Game Progress - check if secret level is unlocked
+const { isSecretLevelUnlocked, loadProgress } = useGameProgress()
 
 // Snowflakes
 interface Snowflake {
@@ -191,6 +210,7 @@ const createSnowflakes = () => {
 
 onMounted(() => {
   createSnowflakes()
+  loadProgress()
 })
 
 // Typewriter effect
@@ -304,5 +324,24 @@ onMounted(async () => {
   animation: snowfall linear infinite;
   will-change: transform;
   filter: brightness(0) invert(1);
+}
+
+/* Secret level transition */
+.secret-enter-active {
+  transition: all 0.6s ease-out;
+}
+
+.secret-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.secret-enter-from {
+  opacity: 0;
+  transform: scale(0.5) translateY(20px);
+}
+
+.secret-leave-to {
+  opacity: 0;
+  transform: scale(0.8);
 }
 </style>

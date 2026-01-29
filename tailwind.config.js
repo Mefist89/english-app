@@ -24,7 +24,18 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Comic Sans MS', 'Comic Neue', 'cursive', 'sans-serif'],
+        sans: ['Lexend', 'sans-serif'],
+      },
+      fontSize: {
+        // Override small sizes to be more readable for children
+        'sm': ['1rem', { lineHeight: '1.5' }],      // 16px instead of 14px
+        'base': ['1.125rem', { lineHeight: '1.6' }], // 18px instead of 16px
+        'lg': ['1.25rem', { lineHeight: '1.6' }],    // 20px
+        'xl': ['1.5rem', { lineHeight: '1.5' }],     // 24px
+        '2xl': ['1.75rem', { lineHeight: '1.4' }],   // 28px
+        '3xl': ['2rem', { lineHeight: '1.3' }],      // 32px
+        '4xl': ['2.5rem', { lineHeight: '1.2' }],    // 40px
+        '5xl': ['3rem', { lineHeight: '1.2' }],      // 48px
       }
     },
   },
