@@ -90,7 +90,7 @@
       >
         <div class="text-4xl mb-2">5️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-orange-600">Level 5</h2>
-        <p class="text-sm text-gray-500 mt-1">Coming soon</p>
+        <p class="text-sm text-gray-500 mt-1">Dress up</p>
       </NuxtLink>
 
       <NuxtLink
@@ -99,7 +99,7 @@
       >
         <div class="text-4xl mb-2">6️⃣</div>
         <h2 class="text-lg md:text-xl font-bold text-green-600">Level 6</h2>
-        <p class="text-sm text-gray-500 mt-1">Coming soon</p>
+        <p class="text-sm text-gray-500 mt-1">Decorate tree</p>
       </NuxtLink>
     </div>
     </div>
